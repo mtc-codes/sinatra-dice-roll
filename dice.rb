@@ -54,11 +54,12 @@ get("/dice/2/10") do
   second_die = rand(1..10)
   sum = first_die + second_die
 
-  outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
-  "<h1>2d6</h1>
-  <p>#{outcome}</p>
-  <p><a href=\"/\">Home</a></p>"
+  erb(:two_ten)
+  # "<h1>2d10</h1>
+  # <p>#{outcome}</p>
+  # <p><a href=\"/\">Home</a></p>"
 
 end
 
@@ -67,11 +68,12 @@ end
 get("/dice/1/20") do
   first_die = rand(1...20)
 
-  outcome = "You rolled a #{first_die} on a 20-sided dice."
+  @outcome = "You rolled a #{first_die} on a 20-sided dice."
 
-  "<h1>1d10</h1>
-  <p>#{outcome}</p>
-  <p><a href=\"/\">Home</a></p>"
+  erb(:one_twenty)
+  # "<h1>1d10</h1>
+  # <p>#{outcome}</p>
+  # <p><a href=\"/\">Home</a></p>"
 end
 
 # Roll 5 4-sided dice
@@ -83,10 +85,11 @@ get("/dice/5/4") do
   fifth_die = rand(1..4)
   sum = first_die + second_die + third_die + fourth_die + fifth_die
 
-  outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, and #{fifth_die} for a total of #{sum}."
+  @outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, and #{fifth_die} for a total of #{sum}."
 
-  "<h1>5d4</h1>
-  <p>#{outcome}</p>
-  <p><a href=\"/\">Home</a></p>"
+  erb(:five_four)
+  # "<h1>5d4</h1>
+  # <p>#{outcome}</p>
+  # <p><a href=\"/\">Home</a></p>"
 
 end
