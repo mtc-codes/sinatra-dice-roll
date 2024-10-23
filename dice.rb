@@ -66,9 +66,9 @@ end
 # Roll 1 20-sided dice
 
 get("/dice/1/20") do
-  first_die = rand(1...20)
+  @die = rand(1...20)
 
-  @outcome = "You rolled a #{first_die} on a 20-sided dice."
+  @outcome = "You rolled a #{@die} on a 20-sided dice."
 
   erb(:one_twenty)
   # "<h1>1d10</h1>
@@ -92,4 +92,17 @@ get("/dice/5/4") do
   # <p>#{outcome}</p>
   # <p><a href=\"/\">Home</a></p>"
 
+end
+
+# Roll 100 6-sided dice
+
+get("/dice/100/6") do
+  @rolls = [] # Create a blank array
+  100.times do    # 100 times...
+    die = rand(1..6)    # Generate a random number
+
+    @rolls.push(die)    # Add the random number to the array 
+  end
+
+  erb(:one_hundred_six)
 end

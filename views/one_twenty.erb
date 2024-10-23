@@ -7,8 +7,14 @@
 
 <body>
 
-<h1>1d10</h1>
+<h1>1d20</h1>
+<% if @die == 1%>
+  <p style="color: red"><%=@outcome%></p>
+<% elseif @die == 20 %>
+  <p style="color: green"><%=@outcome%></p>
+<% else %>
   <p><%=@outcome%></p>
+<% end %>
   <p><a href="/">Home</a></p>
 </body>
 </html>
