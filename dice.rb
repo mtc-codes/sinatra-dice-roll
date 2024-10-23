@@ -12,15 +12,17 @@ BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 # Homepage
 get("/") do
-  "<h1>Hello Dice World</h1>
+  erb(:elephant)
+# Replaced with template above
+#   "<h1>Hello Dice World</h1>
   
-  <ul>
-    <li><a href=\"/dice/2/6\">Roll two 6-sided dice</a></li>
-    <li><a href=\"/dice/2/10\">Roll two 10-sided dice</a></li>
-    <li><a href=\"/dice/1/20\">Roll one 20-sided dice</a></li>
-    <li><a href=\"/dice/5/4\">Roll five 4-sided dice</a></li>
-  </ul>"
-# why the =\ in the href?
+#   <ul>
+#     <li><a href=\"/dice/2/6\">Roll two 6-sided dice</a></li>
+#     <li><a href=\"/dice/2/10\">Roll two 10-sided dice</a></li>
+#     <li><a href=\"/dice/1/20\">Roll one 20-sided dice</a></li>
+#     <li><a href=\"/dice/5/4\">Roll five 4-sided dice</a></li>
+#   </ul>"
+# # why the =\ in the href? - add the backslashes to enable you to write code outside the string. Necessary in Ruby
 end
 
 get("/zebra") do
@@ -38,11 +40,12 @@ get("/dice/2/6") do
     second_die = rand(1..6)
     sum = first_die + second_die
 
-    outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+    @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
-    "<h1>2d6</h1>
-    <p>#{outcome}</p>
-    <p><a href=\"/\">Home</a></p>"
+    erb(:two_six)
+    # "<h1>2d6</h1>
+    # <p>#{outcome}</p>
+    # <p><a href=\"/\">Home</a></p>"
 end
 
 # Roll 2 10-sided dice
